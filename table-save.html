@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>amis demo</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <link rel="stylesheet" href="css/amis/sdk.css" />
+  <!-- <link rel="stylesheet" href="https://houtai.baidu.com/v2/csssdk"/>     -->
+  <!-- 这是默认主题所需的樣式設置，如果是其他主题则不需要 -->
+  <style>
+    html,
+    body,
+    .app-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root" class="app-wrapper"></div>
+  <script src="js/amis/sdk.js"></script>
+  <!-- <script src="https://houtai.baidu.com/v2/jssdk"></script> -->
+  <script type="text/javascript">
+    (function () {
+      let amis = amisRequire('amis/embed');
+      // 通过替换下面这个配置来生成不同页面
+      let amisJson = {
+        "type": "form",
+        "api": "http://127.0.0.1:4523/m1/2923904-0-default/amis/api/mock/form/save",
+        "body": [
+          {
+            "type": "input-text",
+            "label": "姓名",
+            "name": "name",
+            "validations": {
+              "maxLength": 30
+            },
+            "validateOnChange": true,
+            "description": "",
+            "id": "u:4c302bf11279",
+            "required": true
+          },
+          {
+            "type": "input-email",
+            "label": "邮件",
+            "name": "email",
+            "id": "u:b6a8c5a76712",
+            "validations": {
+              "isEmail": true
+            },
+            "validateOnChange": true,
+            "required": true
+          },
+          {
+            "type": "table",
+            "columns": [
+              {
+                "label": "id",
+                "name": "id",
+                "type": "text",
+                "id": "u:5bf06dd55df2"
+              },
+              {
+                "type": "text",
+                "label": "姓名",
+                "name": "name",
+                "id": "u:141b5778a944"
+              },
+              {
+                "type": "text",
+                "label": "邮件",
+                "name": "email",
+                "id": "u:e64cd419845d"
+              }
+            ],
+            "id": "u:2541a0c9772f",
+            "title": "已保存用户信息"
+          }
+        ],
+        "id": "u:43aaf59f9609",
+        "title": "用户信息保存页面"
+      }
+      let amisScoped = amis.embed('#root', amisJson);
+    })();
+  </script>
+</body>
+
+</html>
